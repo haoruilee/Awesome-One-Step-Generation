@@ -10,18 +10,12 @@
 </p>
 
 > A curated list of papers, code, and resources for **one-step diffusion models** — methods that turn noise into high-quality samples in a *single* neural network forward pass.
->
-> Unlike most lists that simply split work into "native vs. distillation", this list is organized by the **core mathematical principle that makes one step generation possible**. Within each principle we then separate 🟢 **native** (from-scratch) and 🔵 **distillation** (teacher-dependent) variants.
 
 ---
 
 ## 🧭 Classification Rationale
 
-Fast-sampling research has historically been catalogued either by application (text-to-image, super-resolution, video) or by a coarse *native vs. distillation* dichotomy. Both axes obscure the deeper question: **what mathematical mechanism actually collapses an iterative sampler into one step?** This list answers that question by grouping methods according to their *primary theoretical contribution*.
-
-In early 2026, **Generative Modeling via Drifting** introduced yet another paradigm: rather than straightening trajectories or enforcing consistency, drifting models push the generator's distribution toward data *during training* via a learned drifting field — the inference-time cost collapses to a single forward pass. Theoretical follow-ups ([arXiv:2603.09936](https://arxiv.org/abs/2603.09936), [arXiv:2603.10592](https://arxiv.org/abs/2603.10592)) connect this to Wasserstein gradient flow of KL divergence and score matching, but the training-time distribution evolution mechanism is sufficiently distinct to warrant its own *Drifting Models* category.
-
-We classify each paper by its **primary contribution**. Many works combine several principles (e.g. adversarial losses layered on score distillation); cross-references are added where a method materially spans categories.
+Instead of the usual *native vs. distillation* split, we group methods by **the core mathematical principle that collapses iterative sampling into one step**. Each paper is placed by its *primary contribution*, with cross-references for works that span multiple principles. Within each principle, we further mark 🟢 native / 🔵 distillation / 🟡 hybrid variants.
 
 | Legend | Meaning |
 |:------:|---------|
@@ -46,7 +40,6 @@ We classify each paper by its **primary contribution**. Many works combine sever
 - [Applications](#applications)
   - [Image Super-Resolution](#image-super-resolution)
   - [Video Generation](#video-generation)
-  - [Controllable Generation](#controllable-generation)
   - [3D Generation](#3d-generation)
   - [Robotics / Control](#robotics--control)
   - [Other Applications](#other-applications)
@@ -391,13 +384,6 @@ We classify each paper by its **primary contribution**. Many works combine sever
   [[Paper](https://arxiv.org/abs/2506.03123)]  
   Parameter-efficient dual-expert consistency decoupling semantics and details.
 
-### Controllable Generation
-
-- **Adding Additional Control to One-Step Diffusion with Joint Distribution Matching** [ICCV 2025] 🔵  
-  [[Paper](https://arxiv.org/abs/2503.06652)]
-
-> See also: **Noise Consistency Training (NCT)** under [Shortcut / Direct Mapping](#shortcut--direct-mapping) — a 🟢 native approach to adding controls.
-
 ### 3D Generation
 
 - **DIFIX3D+: Improving 3D Reconstructions with Single-Step Diffusion Models** [CVPR 2025 Oral] 🔵  
@@ -488,7 +474,6 @@ We classify each paper by its **primary contribution**. Many works combine sever
 | 2025-05 | VideoScene: One-Step 3D Scene Generation | CVPR 2025 | 🔵 | APP | [[Paper](https://arxiv.org/abs/2504.01956)] [[Code](https://github.com/THU-SI/VideoScene)] |
 | 2025-04 | OSV: One Step is Enough for High-Quality Image to Video Generation | CVPR 2025 | 🔵 | APP | [[Paper](https://arxiv.org/abs/2409.11367)] |
 | 2025-03 | Learning Few-Step Diffusion Models by Trajectory Distribution Matching (TDM) | ICCV 2025 | 🔵 | FS | [[Paper](https://arxiv.org/abs/2503.06674)] [[Code](https://github.com/Luo-Yihong/TDM)] |
-| 2025-03 | Adding Additional Control to One-Step Diffusion with Joint Distribution Matching | ICCV 2025 | 🔵 | APP | [[Paper](https://arxiv.org/abs/2503.06652)] |
 | 2025-03 | DIFIX3D+: Single-Step 3D Reconstruction | CVPR 2025 Oral | 🔵 | APP | [[Paper](https://arxiv.org/abs/2503.01774)] [[Code](https://github.com/nv-tlabs/Difix3D)] |
 | 2025-02 | You Only Sample Once (YOSO) | ICLR 2024 | 🟢 | ADV | [[Paper](https://arxiv.org/abs/2403.12931)] [[Code](https://github.com/Luo-Yihong/YOSO)] |
 | 2025-02 | One-step Diffusion Models with f-Divergence Distribution Matching (f-distill) | 2025 | 🔵 | DDM | [[Paper](https://arxiv.org/abs/2502.15681)] |
